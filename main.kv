@@ -4,16 +4,16 @@
         size_hint: None, None
 
     DPEAButton:
-        id: test_button
-        text: 'test'
+        id: btn1
+        text: "On" if root.toggle == True else "Off"
         size: 100, 100
         x: root.width * 0.75
         y: root.height * 0.5
         color: 0, 1, 0, 1
-        on_press: root.pressed()
+        on_press: root.btn1()
 
     DPEAButton:
-        text: "test2"
+        text: ""
         size: 100, 100
         x: root.width * 0.25
         y:root.height * 0.5

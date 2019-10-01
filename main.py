@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import ObjectProperty
 
 from pidev.MixPanel import MixPanel
 from pidev.kivy.PassCodeScreen import PassCodeScreen
@@ -39,6 +40,11 @@ class MainScreen(Screen):
     """
     Class to handle the main screen and its associated touch events
     """
+    toggle = ObjectProperty(True)
+    def btn1(self):
+        self.toggle = not self.toggle
+        self.pressed()
+        print(self.toggle)
 
     def pressed(self):
         """
