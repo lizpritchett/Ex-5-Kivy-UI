@@ -21,6 +21,23 @@
         color: 1, 0, 0, 1
         on_press: root.btn2()
 
+    DPEAButton:
+        id: btn3
+        text: "Motor"
+        size: 100, 100
+        x: root.width * 0.125
+        y:root.height * 0.5
+        color: 0, 0, 1, 1
+        on_press: root.btn3()
+
+    Label:
+        id: label1
+        text: "On" if root.changeLabel == True else "Off"
+        #size: 100, 100
+        x: root.width * 0.125
+        #y: root.height * 0.75
+        color: 0, 0, 0, 1
+
     ImageButton:
         id: logo_image_button
         source: "../../pidev/kivy/images/DPEALogoTransparent.png"

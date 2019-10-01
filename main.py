@@ -42,6 +42,7 @@ class MainScreen(Screen):
     """
     toggle = ObjectProperty(True)
     count = ObjectProperty(0)
+    changeLabel = ObjectProperty(True)
     def btn1(self):
         self.toggle = not self.toggle
         self.pressed()
@@ -52,12 +53,16 @@ class MainScreen(Screen):
         self.count +=1
         print(self.count)
 
+    def btn3(self):
+        self.changeLabel = not self.changeLabel
+        self.pressed()
+
     def pressed(self):
         """
         Function called on button touch event for button with id: testButton
         :return: None
         """
-        PauseScreen.pause(pause_scene_name='pauseScene', transition_back_scene='main', text="Test", pause_duration=5)
+        PauseScreen.pause(pause_scene_name='pauseScene', transition_back_scene='main', text="Test", pause_duration=1)
 
     def admin_action(self):
         """
