@@ -5,6 +5,7 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
+from kivy.uix.slider import Slider
 
 from pidev.MixPanel import MixPanel
 from pidev.kivy.PassCodeScreen import PassCodeScreen
@@ -56,6 +57,8 @@ class MainScreen(Screen):
     def btn3(self):
         self.changeLabel = not self.changeLabel
         self.pressed()
+
+    def sldr1(self):
 
     def pressed(self):
         """
