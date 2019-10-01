@@ -13,12 +13,13 @@
         on_press: root.btn1()
 
     DPEAButton:
-        text: ""
+        id: btn2
+        text: str(root.count)
         size: 100, 100
         x: root.width * 0.25
         y:root.height * 0.5
         color: 1, 0, 0, 1
-        on_press: root.pressed()
+        on_press: root.btn2()
 
     ImageButton:
         id: logo_image_button

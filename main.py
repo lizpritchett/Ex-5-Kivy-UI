@@ -41,10 +41,16 @@ class MainScreen(Screen):
     Class to handle the main screen and its associated touch events
     """
     toggle = ObjectProperty(True)
+    count = ObjectProperty(0)
     def btn1(self):
         self.toggle = not self.toggle
         self.pressed()
         print(self.toggle)
+
+    def btn2(self):
+        self.pressed()
+        self.count +=1
+        print(self.count)
 
     def pressed(self):
         """
