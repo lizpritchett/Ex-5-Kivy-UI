@@ -19,6 +19,7 @@ MIXPANEL = MixPanel("Project Name", MIXPANEL_TOKEN)
 SCREEN_MANAGER = ScreenManager()
 MAIN_SCREEN_NAME = 'main'
 ADMIN_SCREEN_NAME = 'admin'
+SECOND_SCREEN_NAME = 'secondScreen'
 
 
 class ProjectNameGUI(App):
@@ -46,26 +47,25 @@ class MainScreen(Screen):
     changeLabel = ObjectProperty(True)
     def btn1(self):
         self.toggle = not self.toggle
-        self.pressed()
         print(self.toggle)
 
     def btn2(self):
-        self.pressed()
         self.count +=1
         print(self.count)
 
     def btn3(self):
         self.changeLabel = not self.changeLabel
-        self.pressed()
 
     def sldr1(self):
+        pass
 
     def pressed(self):
         """
         Function called on button touch event for button with id: testButton
         :return: None
         """
-        PauseScreen.pause(pause_scene_name='pauseScene', transition_back_scene='main', text="Test", pause_duration=1)
+        #PauseScreen.pause(pause_scene_name='pauseScene', transition_back_scene='main', text="Test", pause_duration=1)
+        SCREEN_MANAGER.current = 'secondScreen'
 
     def admin_action(self):
         """
@@ -117,6 +117,33 @@ class AdminScreen(Screen):
         :return: None
         """
         quit()
+
+class SecondScreen(Screen):
+    """
+    Class to handle the AdminScreen and its functionality
+    """
+
+    def __init__(self, **kwargs):
+        """
+        Load the AdminScreen.kv file. Set the necessary names of the screens for the PassCodeScreen to transition to.
+        Lastly super Screen's __init__
+        :param kwargs: Normal kivy.uix.screenmanager.Screen attributes
+        """
+        Builder.load_file('SecondScreen.kv')
+
+        PassCodeScreen.set_admin_events_screen(SECOND_SCREEN_NAME)  # Specify screen name to transition to after correct password
+        PassCodeScreen.set_transition_back_screen(MAIN_SCREEN_NAME)  # set screen name to transition to if "Back to Game is pressed"
+
+        super(SecondScreen, self).__init__(**kwargs)
+
+    @staticmethod
+    def transition_back():
+        """
+        Transition back to the main screen
+        :return:
+        """
+        SCREEN_MANAGER.current = MAIN_SCREEN_NAME
+
 """
 Widget additions
 """
@@ -126,6 +153,7 @@ SCREEN_MANAGER.add_widget(MainScreen(name=MAIN_SCREEN_NAME))
 SCREEN_MANAGER.add_widget(PassCodeScreen(name='passCode'))
 SCREEN_MANAGER.add_widget(PauseScreen(name='pauseScene'))
 SCREEN_MANAGER.add_widget(AdminScreen(name=ADMIN_SCREEN_NAME))
+SCREEN_MANAGER.add_widget(SecondScreen(name=SECOND_SCREEN_NAME))
 
 """
 MixPanel

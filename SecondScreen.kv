@@ -1,0 +1,12 @@
+<SecondScreen>:
+    name: 'secondScreen'
+    FloatLayout:
+        size_hint: None, None
+
+    ImageButton:
+        id: aightimma_image_button
+        source: "aightimma.png"
+        size: 1000, 1000
+        x: root.width * 0.25
+        y: root.height * 0.13
+        on_press: root.transition_back()
